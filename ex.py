@@ -42,7 +42,7 @@ for i in range (number):
     s=Student(name, birth_year, grade)
     students.append(s)
 
-print("\nStudent Details are given below:")
+print("\nStudent Details are given below.:")
 
 for s in students:
     s.intro()
