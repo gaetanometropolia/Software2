@@ -6,6 +6,8 @@
 
 
 import random
+from operator import truediv
+
 
 class Car:
 
@@ -33,6 +35,28 @@ for i in range (1,11):
     new_car= f"ABC-{i}"
     max_v = random.randint(100,200)
     cars.append(Car(new_car, max_v))
+
+hours=0
+race_finished = False
+while True:
+    hours += 1
+
+    for i in cars:
+        acceleration = random.randint(-10, 15)
+        i.accelerate(acceleration)
+        i.drive(1)
+    for i in cars:
+        if i.travelled_distance > 10000:
+            race_finished=True
+            break
+    if race_finished:
+        break
+
+
+
+for i in cars:
+    print(f"{i.registration_number} | {i.maximum_speed} km/h   | {i.travelled_distance:} km")
+
 
 
 
