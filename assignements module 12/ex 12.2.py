@@ -2,4 +2,23 @@
 
 import requests
 
-request =
+from api_key import api_key as api_key
+
+municipality = input("Write your municipality")
+
+request = f"https://api.openweathermap.org/data/2.5/weather?q={municipality}&appid={api_key}"
+
+try:
+    response=requests.get(request)
+    if response.status_code==200:
+        json_response = response.json()
+
+        kelvin=json_response["main"]["temp"]
+        celsius= kelvin - 273.15
+
+        print(f"The weather data are {json_response["weather"][0]["description"]}")
+        print(f"The actual temperature is {celsius:.2f}")
+
+
+except requests.exceptions.RequestException as e:
+    print ("Request could not be completed.")
